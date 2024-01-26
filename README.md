@@ -1,6 +1,30 @@
 # ApolloniaDental
-### This is NodeJS, ExpressJS and MongoDB based A Dental Medicine Center Example Project 
-### The Frontend built with EJS and Bootstrap
+ This is NodeJS, ExpressJS and MongoDB based A Dental Medicine Center Example Project </br>
+ The Frontend built with EJS and Bootstrap
+
+### Prerequisites
+ NodeJS, NPM, MongoDB are installed.
+
+### Setting Up
+Clone the repo
+   ```sh
+   git clone https://github.com/rdvntpl/ApolloniaDental.git
+   ```
+
+ ### Running
+ Use the commands
+   ```sh
+   npm start
+     or
+   node app.js
+   ```
+
+### Running with Docker
+ Use this command
+   ```sh
+   docker-compose up -d
+   ```
+
 
 ![Screenshot 2024-01-05 at 23-52-33 Apollonia Dental](https://github.com/rdvntpl/ApolloniaDental/assets/15113737/e1764d87-f1d2-4a37-a65e-027f34bf849b)
 ![Screenshot 2024-01-05 at 23-53-07 Apollonia Dental](https://github.com/rdvntpl/ApolloniaDental/assets/15113737/145d3837-dd89-49b1-93bc-3eacbbacfc38)
