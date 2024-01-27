@@ -25,6 +25,7 @@ Clone the repo
    docker-compose up -d
    ```
 
+### Screenshots
 
 ![Screenshot 2024-01-05 at 23-52-33 Apollonia Dental](https://github.com/rdvntpl/ApolloniaDental/assets/15113737/e1764d87-f1d2-4a37-a65e-027f34bf849b)
 ![Screenshot 2024-01-05 at 23-53-07 Apollonia Dental](https://github.com/rdvntpl/ApolloniaDental/assets/15113737/145d3837-dd89-49b1-93bc-3eacbbacfc38)
