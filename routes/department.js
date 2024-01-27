@@ -2,7 +2,9 @@ const express = require('express')
 const router = express.Router()
 const Department = require('../models/department')
 
+//Read ALL
 router.get('/department', async (req,res) => {
+
     try {
         const departments = await Department.find({})
         res.render("departments",{list:departments})
@@ -12,6 +14,7 @@ router.get('/department', async (req,res) => {
     }
 })
 
+//Read Department with Employees
 router.get('/departmentsDetailed', async (req,res) => {
   try {
       const departmentsDetailed = await Department.aggregate([{
@@ -19,7 +22,7 @@ router.get('/departmentsDetailed', async (req,res) => {
           {
             from:"employees",
             localField:"_id",
-            foreignField:"department",
+            foreignField:"departmentId",
             as:"Staff",
             
           }
@@ -30,58 +33,69 @@ router.get('/departmentsDetailed', async (req,res) => {
       return res.status(500).json({message:'Internal Server Error'})
   }
 })
-/* 
-router.post(/'/department', async (req,res) => {
+
+//ADD
+router.post('/department', async (req,res) => {
     try {
-        let {name} = req.body
+        const {name} = req.body
+        console.log(name)
         
         if (!(name)) {
-            return res.status(200).json({ message : 'Please enter the name !'})
+          console.log('ADD : NO NAME ERROR')
+            return res.redirect('/department')
         }
         const checkDept = await Department.findOne({name})
         if (checkDept) {
-            return res.status(400).json({ message : 'Department already exists!'})
+          console.log('ADD : EXiSTS')
+            return res.redirect('/department')
         }
 
         const department = new Department({name})
         await department.save()
 
-        return res.status(200).json({message:'Department added!',department})
+        console.log('ADD OK')
+        return res.redirect('/department')
 
     } catch (error) {
         console.log(error)
-        return res.status(500).json({message:'Internal Server Error'})
+        console.log('ADD ERROR')
+        return res.redirect('/department')
     }
 })
-*/
 
-/*
-router.put('/department/:id', async (req, res) => {
+//Update
+router.post('/department/:id', async (req, res) => {
     const { id } = req.params;
     const { name } = req.body;
-  
-    try {
-      const department = await Department.findByIdAndUpdate(id, { name }, { new: true });
-      res.send(department);
-    } catch (error) {
-      console.error(error);
-      res.status(500).send(error);
-    }
-  });
-*/
 
-/*
-router.delete('/department/:id', async (req, res) => {
-    const { name } = req.params;
-  
+    console.log('id:'+id+" ,name:"+name);
+
     try {
-      const department = await Department.findByIdAndDelete(name);
-      res.send(department);
+      const department = await Department.findByIdAndUpdate(id, { name });
+      console.log('UPDATE OK')
+      return res.redirect('/department')
     } catch (error) {
       console.error(error);
-      res.status(500).send(error);
+      console.log('UPDATE ERROR')
+      return res.redirect('/department')
     }
   });
-  */
+
+
+//DELETE
+router.get('/department/:id', async (req, res) => {
+    const { id } = req.params;
+  
+    try {
+      const department = await Department.findByIdAndDelete(id);
+      console.log('DELETE OK')
+      return res.redirect('/department')
+      
+    } catch (error) {
+      console.error(error);
+      console.log('DELETE ERROR')
+      return res.redirect('/department')
+    }
+  });
 
 module.exports = router
