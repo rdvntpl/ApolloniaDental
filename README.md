@@ -1,5 +1,5 @@
 # ApolloniaDental
-This is NodeJS, ExpressJS and MongoDB based A Dental Medicine Center Example Project </br>
+This is a ExpressJS and MongoDB based A Dental Health Center Project </br>
 The Frontend built with EJS and Bootstrap
 
 ### Prerequisites
