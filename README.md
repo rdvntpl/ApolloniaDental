@@ -27,7 +27,7 @@ Use this command
    ```
 
 ### Feedback - How to tell that something wrong! ?
-[Issue #1](https://github.com/rdvntpl/ApolloniaDental/issues/2)
+[Issue #1 - I cloned the repo and launched it but some pages aren't opened ??](https://github.com/rdvntpl/ApolloniaDental/issues/2)
 
 ### Screenshots
 
