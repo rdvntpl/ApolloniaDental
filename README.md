@@ -26,6 +26,9 @@ Use this command
    docker-compose up -d
    ```
 
+### Feedback - How to tell that something wrong! ?
+[Issue #1](https://github.com/rdvntpl/ApolloniaDental/issues/2)
+
 ### Screenshots
 
 ![Screenshot 2024-01-05 at 23-52-33 Apollonia Dental](https://github.com/rdvntpl/ApolloniaDental/assets/15113737/e1764d87-f1d2-4a37-a65e-027f34bf849b)
