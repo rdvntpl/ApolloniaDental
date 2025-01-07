@@ -1,44 +1,147 @@
 <!DOCTYPE html>
+<html lang="en">
     <head>
-        <title>Apollonia Dental</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Apollonia Dental | Professional Dental Care</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <style>
+            .navbar {
+                background-color: #ffffff;
+                box-shadow: 0 2px 4px rgba(0,0,0,.1);
+            }
+            .navbar-nav .nav-link {
+                color: #2c3e50;
+                font-weight: 500;
+                padding: 0.5rem 1rem;
+                transition: color 0.3s ease;
+            }
+            .navbar-nav .nav-link:hover {
+                color: #3498db;
+            }
+            .hero-section {
+                background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+                padding: 6rem 0;
+            }
+            .feature-card {
+                transition: transform 0.3s ease;
+                cursor: pointer;
+            }
+            .feature-card:hover {
+                transform: translateY(-5px);
+            }
+            .icon-circle {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                background-color: #e3f2fd;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 1rem;
+            }
+            .icon-circle i {
+                font-size: 2rem;
+                color: #3498db;
+            }
+        </style>
     </head>
     <body>
-      <header class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-        
-        <nav class="navbar navbar-expand-sm bg-light-subtle mt-2 mt-md-0 ms-md-auto">
-            <div class="container-fluid">
-                <!-- Links -->
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/employee">Medical Staff</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/department">Departments</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/departmentsdetailed">Departments with Staff</a>
-                  </li>
-                </ul>
-              </div>
-
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <i class="fas fa-tooth text-primary"></i>
+                    <span class="ms-2 fw-bold">Apollonia Dental</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/employee"><i class="fas fa-user-md"></i> Medical Staff</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/department"><i class="fas fa-hospital"></i> Departments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/departmentsdetailed"><i class="fas fa-list-alt"></i> Staff Directory</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
-      </header>
 
-        <div class="container my-5">
-        <div class="p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-          <h1 class="display-5 fw-bold text-body-emphasis text-center">Welcome to Apollonia Dental</h1>
-          <div class="col-lg-6 mx-auto">
-            <p class="btn-outline-info btn-lg px-4 me-sm-3 fw-bold text-center">Dental Health Center</p>
-          </div>
-        </div>
-      </div>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="display-4 fw-bold mb-4">Welcome to Apollonia Dental</h1>
+                        <p class="lead mb-4">Providing exceptional dental care with advanced technology and compassionate service.</p>
+                        <a href="/employee" class="btn btn-primary btn-lg">Meet Our Team</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="feature-card text-center p-4 bg-white rounded-3 shadow-sm">
+                            <div class="icon-circle">
+                                <i class="fas fa-teeth"></i>
+                            </div>
+                            <h3 class="h5 mb-3">Expert Care</h3>
+                            <p class="text-muted">Professional dental services provided by experienced specialists</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card text-center p-4 bg-white rounded-3 shadow-sm">
+                            <div class="icon-circle">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3 class="h5 mb-3">Convenient Hours</h3>
+                            <p class="text-muted">Flexible scheduling to accommodate your busy lifestyle</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card text-center p-4 bg-white rounded-3 shadow-sm">
+                            <div class="icon-circle">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3 class="h5 mb-3">Modern Facility</h3>
+                            <p class="text-muted">State-of-the-art equipment and comfortable environment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-light py-4 mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="mb-0">&copy; 2024 Apollonia Dental. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <a href="#" class="text-decoration-none text-dark me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-decoration-none text-dark me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-decoration-none text-dark"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

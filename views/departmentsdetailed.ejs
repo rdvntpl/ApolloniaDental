@@ -3,55 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <title>Apollonia Dental</title>
+    <title>Staff Directory | Apollonia Dental</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+        .navbar-nav .nav-link {
+            color: #2c3e50;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #3498db;
+        }
+        .page-header {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        .department-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,.05);
+            transition: transform 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+        .department-card:hover {
+            transform: translateY(-5px);
+        }
+        .department-header {
+            background: #f8f9fa;
+            padding: 1rem 1.5rem;
+            border-radius: 15px 15px 0 0;
+            border-bottom: 2px solid #dee2e6;
+        }
+        .department-header h3 {
+            color: #2c3e50;
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        .staff-list {
+            padding: 1rem 1.5rem;
+            list-style: none;
+            margin: 0;
+        }
+        .staff-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        .staff-item:last-child {
+            border-bottom: none;
+        }
+        .staff-icon {
+            background: #e3f2fd;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+        .staff-icon i {
+            color: #3498db;
+        }
+        .empty-department {
+            color: #6c757d;
+            font-style: italic;
+            padding: 1rem 0;
+        }
+    </style>
 </head>
 <body>
-  <header class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-        
-    <nav class="navbar navbar-expand-sm bg-light-subtle mt-2 mt-md-0 ms-md-auto">
-        <div class="container-fluid">
-            <!-- Links -->
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/employee">Medical Staff</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/department">Departments</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/departmentsdetailed">Departments with Staff</a>
-              </li>
-            </ul>
-          </div>
-
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-tooth text-primary"></i>
+                <span class="ms-2 fw-bold">Apollonia Dental</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/employee"><i class="fas fa-user-md"></i> Medical Staff</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/department"><i class="fas fa-hospital"></i> Departments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/departmentsdetailed"><i class="fas fa-list-alt"></i> Staff Directory</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
-  </header>
-    <div class="container pt-5">
-      <h2>Departments With Staff</h2>
-        <ul class="list-group list-group-flush">
-            <% list.forEach((e)=> { %>
-                <li class="list-group-item">
-                    <%= e.name %>
-                    <ul>
-                        <% e.Staff.forEach((s)=> { %>
-                            <li>
-                                <%= s.name %>
-                                <%= s.surname %>
-                            </li>
-                        <% }) %>
-                    </ul>
-                </li>
 
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="fw-bold">Staff Directory</h1>
+            <p class="lead mb-0">View our departments and their medical staff</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <% list.forEach((e)=> { %>
+                <div class="col-md-6">
+                    <div class="department-card">
+                        <div class="department-header">
+                            <h3><i class="fas fa-hospital-alt me-2"></i><%= e.name %></h3>
+                        </div>
+                        <ul class="staff-list">
+                            <% if (e.Staff && e.Staff.length > 0) { %>
+                                <% e.Staff.forEach((s)=> { %>
+                                    <li class="staff-item">
+                                        <div class="staff-icon">
+                                            <i class="fas fa-user-md"></i>
+                                        </div>
+                                        <div>
+                                            <strong><%= s.name %> <%= s.surname %></strong>
+                                        </div>
+                                    </li>
+                                <% }) %>
+                            <% } else { %>
+                                <li class="empty-department">No staff members assigned to this department</li>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
             <% }) %>
-        </ul>
+        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

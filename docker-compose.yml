@@ -1,12 +1,18 @@
-version: '1'
+version: '3.8'
 services: 
   web: 
     build: .
     ports:
-      - "8080:8080"
+      - "3000:8080"
     depends_on:
       - mongo
+    environment:
+      - MONGODB_URI=mongodb://ApolloDental:root@mongo:27017/apolloniadentaldb?authSource=admin
   mongo:
     image: mongo
     ports:
       - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=ApolloDental
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    
