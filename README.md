@@ -15,10 +15,11 @@ Clone the repo
 ### Running with Docker
 For Docker users,</br>
 Open terminal in project root folder </br>
-Use this command
+Type this command
    ```sh
-   docker-compose up -d
+   docker compose up
    ```
+Open Browser localhost:3000
 
 ### Feedback - How to tell that something wrong! ?
 [Issue #1 - I cloned the repo and launched it but some pages aren't opened ??](https://github.com/rdvntpl/ApolloniaDental/issues/2)
