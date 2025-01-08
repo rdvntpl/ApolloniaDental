@@ -1,6 +1,5 @@
 const express = require('express')
 const dotenv = require('dotenv')
-//const router = express.Router()
 dotenv.config()
 const connectDb = require('./config/db')
 const employee = require('./models/employee')
@@ -15,6 +14,7 @@ app.use(express.urlencoded({extended:true}))
 
 app.use(require('./routes/employee'))
 app.use(require('./routes/department'))
+app.use(require('./routes/admin')) // Add admin router
 
 app.set('view engine','ejs')
 

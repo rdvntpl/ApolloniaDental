@@ -42,24 +42,24 @@ router.post('/department', async (req,res) => {
         
         if (!(name)) {
           console.log('ADD : NO NAME ERROR')
-            return res.redirect('/department')
+            return res.redirect('/admin')
         }
         const checkDept = await Department.findOne({name})
         if (checkDept) {
           console.log('ADD : EXiSTS')
-            return res.redirect('/department')
+            return res.redirect('/admin')
         }
 
         const department = new Department({name})
         await department.save()
 
         console.log('ADD OK')
-        return res.redirect('/department')
+        return res.redirect('/admin')
 
     } catch (error) {
         console.log(error)
         console.log('ADD ERROR')
-        return res.redirect('/department')
+        return res.redirect('/admin')
     }
 })
 
@@ -73,11 +73,11 @@ router.post('/department/:id', async (req, res) => {
     try {
       const department = await Department.findByIdAndUpdate(id, { name });
       console.log('UPDATE OK')
-      return res.redirect('/department')
+      return res.redirect('/admin')
     } catch (error) {
       console.error(error);
       console.log('UPDATE ERROR')
-      return res.redirect('/department')
+      return res.redirect('/admin')
     }
   });
 
@@ -89,12 +89,12 @@ router.get('/department/:id', async (req, res) => {
     try {
       const department = await Department.findByIdAndDelete(id);
       console.log('DELETE OK')
-      return res.redirect('/department')
+      return res.redirect('/admin')
       
     } catch (error) {
       console.error(error);
       console.log('DELETE ERROR')
-      return res.redirect('/department')
+      return res.redirect('/admin')
     }
   });
 
