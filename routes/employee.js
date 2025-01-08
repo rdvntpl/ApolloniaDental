@@ -22,12 +22,12 @@ router.post('/employee', async (req,res) => {
         const {name,surname,department} = req.body
         
         if (!(name&&surname)) {
-            return res.redirect('/employee');// status(400).json({ message : 'Please fill name and surname !'})
+            return res.redirect('/admin');// status(400).json({ message : 'Please fill name and surname !'})
         }
         const checkEmp = await Employee.findOne({name,surname})
         if (checkEmp) {
             console.log('error: already exists '+checkEmp)
-            return res.redirect('/employee'); //status(400).json({ message : 'Employee already exists!'})
+            return res.redirect('/admin'); //status(400).json({ message : 'Employee already exists!'})
         }
 
         const deptID = await Department.findOne({name:department},'_id')
@@ -36,11 +36,11 @@ router.post('/employee', async (req,res) => {
         console.log('ok report2: '+employee)
         await employee.save()
 
-        return res.redirect('/employee');// status(200).json({message:'Employee added!',employee})
+        return res.redirect('/admin');// status(200).json({message:'Employee added!',employee})
 
     } catch (error) {
         console.log(error)
-        return res.redirect('/employee');// status(500).json({message:'Internal Server Error'})
+        return res.redirect('/admin');// status(500).json({message:'Internal Server Error'})
     }
 })
 
@@ -54,11 +54,11 @@ router.post('/employee/:id', async (req, res) => {
     try {
       const employee = await Employee.findByIdAndUpdate(id, { name, surname , departmentId:deptID });
       console.log('update ok')
-      res.redirect('/employee');//send(employee);
+      res.redirect('/admin');
     } catch (error) {
       console.log('update ERROR')
       console.error(error);
-      res.redirect('/employee');// status(500).send(error);
+      res.redirect('/admin');
     }
   });
 
@@ -69,11 +69,11 @@ router.get('/employee/:id', async (req, res) => {
     try {
       const employee = await Employee.findByIdAndDelete(id);
       console.log('DELETE ok')
-      res.redirect('/employee');//send(employee);
+      res.redirect('/admin');
     } catch (error) {
       console.log('DELETE ERROR')
       console.error(error);
-      res.redirect('/employee');//status(500).send(error);
+      res.redirect('/admin');
     }
   });
 

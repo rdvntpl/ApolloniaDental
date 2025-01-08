@@ -8,6 +8,9 @@ services:
       - mongo
     environment:
       - MONGODB_URI=mongodb://ApolloDental:root@mongo:27017/apolloniadentaldb?authSource=admin
+    volumes:
+      - .:/app   # Mount current directory to /app in container
+      - /app/node_modules  # Preserve container's node_modules
   mongo:
     image: mongo
     ports:
@@ -15,4 +18,3 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=ApolloDental
       - MONGO_INITDB_ROOT_PASSWORD=root
-    
